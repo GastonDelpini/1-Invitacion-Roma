@@ -29,6 +29,56 @@
 <body>
     <h1>¡Estás Invitado al cumpleaños de Roma!</h1>
     <p>Te esperamos el día 22 de Septiembre a las 20:00hs en Racedo 5865.</p>
+    
+<div id="timer">
+    <p id="days">0</p> días 
+    <p id="hours">0</p> horas 
+    <p id="minutes">0</p> minutos 
+    <p id="seconds">0</p> segundos
+</div>
+    
+<script>
+    // Establecer la fecha y hora del evento
+    var eventDate = new Date("Sep 22, 2023 20:00:00").getTime();
+
+    // Actualizar el temporizador cada segundo
+    var x = setInterval(function() {
+
+        var now = new Date().getTime();
+        var distance = eventDate - now;
+
+        // Cálculos de tiempo
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Mostrar los resultados
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
+
+        // Si el temporizador llega a 0
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "¡Es hora de la fiesta!";
+        }
+    }, 1000);
+</script>
+    <style>
+    #timer {
+        font-size: 1.5em;
+        text-align: center;
+    }
+    #timer p {
+        display: inline-block;
+        margin: 0 10px;
+    }
+</style>
+
+
+
     <p>Por favor confirma tu asistencia antes del 31 de Agosto.</p>
     <p>¡Te esperamos!</p>
     <img src="https://github.com/GastonDelpini/1-Invitacion-Roma/blob/2be6ee7116871a2e6368fed4ecc0ca6361f02942/Minnie%20bebe%201%20a%C3%B1o%20png.png" alt="Minnie bebé" class="minnie-img">
